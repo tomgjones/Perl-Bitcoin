@@ -1,0 +1,5 @@
+Much of this is a port of the Bitcoin.* javascript classes in
+the bitaddress.org code, which is copyright 2011-2012
+"bitaddress.org" and licensed under the MIT license (I think, based
+on reading the comments in
+<https://www.bitaddress.org/bitaddress.org-v1.6-SHA1-162d1ff4fd1e09222cbaca6c282672ee6c195e1b.html>.)
