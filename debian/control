@@ -11,6 +11,7 @@ Package: libbitcoin-perl
 Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends}, libclass-insideout-perl,
  libdigest-sha256-perl, libcrypt-random-source-perl, libparams-validate-perl,
- libcrypt-ripemd160-perl, libfile-slurp-perl, b58, libcrypt-ec-perl
+ libcrypt-ripemd160-perl, libfile-slurp-perl, b58, libcrypt-ec-perl,
+ libreadonly-perl
 Description: Bitcoin private / public keypairs, and addresses
  Bitcoin private / public keypairs, and addresses
