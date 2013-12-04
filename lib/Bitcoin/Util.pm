@@ -12,9 +12,9 @@ use feature 'say';
 use strict;
 
 use Data::Dumper;
-use Digest::SHA256;
 use File::Slurp qw(read_file);
 use IO::Pipe;
+use Rhash;
 
 our @EXPORT_OK = qw(add_2sha256chk rm_2sha256chk sha256
     int2binstr binstr2int base58  base58_decode validate_2sha256chk);
@@ -51,14 +51,7 @@ sub rm_2sha256chk {
 # utility function like this.
 sub sha256 {
     my ($binstr) = @_;
-
-    my $sha256er = Digest::SHA256::new(256);
-    my $sha256 = $sha256er->hash($binstr);
-    if (length($sha256) > 32) {
-        # warn "working round Digest::SHA256 bug\n";
-        substr($sha256, 32, length($sha256) - 32, "");
-    }
-    return $sha256;
+    return pack('H*', Rhash::msg(Rhash::SHA256, $binstr));
 }
 
 # Returns a byte string representing the big integer given as input.

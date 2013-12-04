@@ -1,3 +1,9 @@
+libbitcoin-perl (0.2) UNRELEASED; urgency=low
+
+  * Use Rhash instead of various broken crypto hash libs.
+
+ -- Tom Jones <tom.jones@bccx.com>  Wed, 04 Dec 2013 16:32:26 +0000
+
 libbitcoin-perl (0.1-4) unstable; urgency=low
 
   * Initial Release.

@@ -39,8 +39,7 @@ use strict;
 use Bitcoin::Address;
 use Bitcoin::Util qw(sha256 int2binstr);
 use Class::InsideOut qw(id register private);
-use Crypt::RIPEMD160;
-use Digest::SHA256;
+use Rhash;
 
 private n => my %n;
 
@@ -64,7 +63,7 @@ sub keyhash {
     my ($self) = @_;
     my $id = id $self;
     my $keybinstr = int2binstr($n{$id});
-    my $digest = Crypt::RIPEMD160->hash(sha256($keybinstr));
+    my $digest = pack('H*', Rhash::msg(Rhash::RIPEMD160, sha256($keybinstr)));
     return $digest;
 }
 

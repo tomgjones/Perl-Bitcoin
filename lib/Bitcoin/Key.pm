@@ -12,7 +12,7 @@ Bitcoin::Key - Bitcoin private key.
 
     use bignum;
     my $key2 = Bitcoin::Key->new(
-        0x83fe950f8abecbd6e938172563290baec27f093625f61eabc874923651990926
+        value => 0x83fe950f8abecbd6e938172563290baec27f093625f61eabc874923651990926
     );
 
 =head1 DESCRIPTION
@@ -21,10 +21,13 @@ A Bitcoin::Key represents a private key in Bitcoin.  It stringifies
 to its representation in Wallet Import Format, which is a Base 58 
 string format for the private key commonly used in Bitcoin software.
 
-=head2 new([$n])
+=head2 new(), new(value => $n), new(wif => $str)
 
-Constructor.  If a big integer $n is given, it is used as the value of 
-the 256 bit private key.  If $n is not given, a random private key is
+Constructor.  If a big integer $n is given with name "value", it 
+is used as the value of 
+the 256 bit private key.  If wif is given, this should be a string
+in the wallet import / export format.  If neither of these is given, 
+a random private key is
 generated.
 
 =head2 wif
@@ -104,6 +107,7 @@ sub new {
 	if ($init_args{key} < $MIN) {
 	    die "key value too small\n";
 	}
+warn "key: " . $init_args{key};
         $key{$id} = delete $init_args{key};
     }
     elsif (exists($init_args{wif})) {
